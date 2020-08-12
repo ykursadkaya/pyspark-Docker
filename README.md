@@ -8,9 +8,9 @@ Just an image for running PySpark.
 
 - OpenJDK -> openjdk:8-slim-buster
 
-- Python -> python:3.7.7-slim-buster
+- Python -> python:3.7.8-slim-buster
 
-- PySpark -> 2.4.5
+- PySpark -> 3.0.0
 
   
 
