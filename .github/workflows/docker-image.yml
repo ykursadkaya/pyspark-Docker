@@ -18,7 +18,7 @@ jobs:
         openjdk-version: [8]
         python-version: [3.7.8]
         pyspark-version: [2.4.4, 2.4.5, 3.0.0]
-        image-variant: [slim-buster, buster]
+        image-variant: ['slim-buster', 'buster']
     
     steps:
       - 
@@ -44,3 +44,11 @@ jobs:
          name: Docker Push
          run: |
            docker push ykursadkaya/pyspark:${{ matrix.pyspark-version }}-${{ matrix.image-variant }}
+      -
+        name: Slim Buster Tag
+        if: matrix.image-variant == 'slim-buster'
+        run: |
+          docker tag ykursadkaya/pyspark:${{ matrix.pyspark-version }}-${{ matrix.image-variant }} \
+            ykursadkaya/pyspark:${{ matrix.pyspark-version }}
+             
+          docker push ykursadkaya/pyspark:${{ matrix.pyspark-version }}
