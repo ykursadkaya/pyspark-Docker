@@ -1,0 +1,46 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        openjdk-version: [8]
+        python-version: [3.7.8]
+        pyspark-version: [2.4.4, 2.4.5, 3.0.0]
+        image-variant: [slim-buster, buster]
+    
+    steps:
+      - 
+        name: Docker Login
+        env:
+            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+            echo "${DOCKER_PASSWORD}" | docker login --username "${DOCKER_USERNAME}" --password-stdin
+      -
+         name: Checkout
+         uses: actions/checkout@v2
+      -
+        name: Build the Docker image
+        run: |
+          docker build . --file Dockerfile \
+            --build-arg OPENJDK_VERSION=${{ matrix.openjdk-version }} \
+            --build-arg PYTHON_VERSION=${{ matrix.python-version }} \
+            --build-arg PYSPARK_VERSION=${{ matrix.pyspark-version }} \
+            --build-arg IMAGE_VARIANT=${{ matrix.image-variant }} \
+            --tag ykursadkaya/pyspark:${{ matrix.pyspark-version }}-${{ matrix.image-variant }}
+      -
+         name: Docker Push
+         run: |
+           docker push ykursadkaya/pyspark:${{ matrix.pyspark-version }}-${{ matrix.image-variant }}
