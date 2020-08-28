@@ -31,3 +31,8 @@ jobs:
             --build-arg PYSPARK_VERSION=${{ matrix.pyspark-version }} \
             --build-arg IMAGE_VARIANT=${{ matrix.image-variant }} \
             --tag ykursadkaya/pyspark:${{ matrix.pyspark-version }}-${{ matrix.image-variant }}
+      -
+        name: Test PySpark Script
+        if: success()
+        run: |
+          docker run --entrypoint="" -v $(pwd):/repo pyspark python /repo/test.py

@@ -41,12 +41,17 @@ jobs:
             --build-arg IMAGE_VARIANT=${{ matrix.image-variant }} \
             --tag ykursadkaya/pyspark:${{ matrix.pyspark-version }}-${{ matrix.image-variant }}
       -
+        name: Test PySpark Script
+        run: |
+          docker run --entrypoint="" -v $(pwd):/repo pyspark python /repo/test.py
+      -
          name: Docker Push
+         if: success()
          run: |
            docker push ykursadkaya/pyspark:${{ matrix.pyspark-version }}-${{ matrix.image-variant }}
       -
         name: Slim Buster Tag
-        if: matrix.image-variant == 'slim-buster'
+        if: matrix.image-variant == 'slim-buster' && success()
         run: |
           docker tag ykursadkaya/pyspark:${{ matrix.pyspark-version }}-${{ matrix.image-variant }} \
             ykursadkaya/pyspark:${{ matrix.pyspark-version }}
