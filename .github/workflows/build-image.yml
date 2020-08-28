@@ -35,4 +35,4 @@ jobs:
         name: Test PySpark Script
         if: success()
         run: |
-          docker run --entrypoint="" -v $(pwd):/repo pyspark python /repo/test.py
+          docker run --entrypoint="" -v $(pwd):/repo ykursadkaya/pyspark:${{ matrix.pyspark-version }}-${{ matrix.image-variant }} python /repo/test.py
