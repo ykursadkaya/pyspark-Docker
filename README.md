@@ -8,7 +8,7 @@ Just an image for running PySpark.
 
 - OpenJDK -> openjdk:8-slim-buster
 
-- Python -> python:3.7.8-slim-buster
+- Python -> python:3.7.9-slim-buster
 
 - PySpark -> 3.0.0
 
@@ -17,7 +17,7 @@ Just an image for running PySpark.
 You can however specify OpenJDK, Python, PySpark versions and image variant when building.
 
 ```bash
-$ docker build -t pyspark --build-arg PYTHON_VERSION=3.6.10 --build-arg IMAGE=buster
+$ docker build -t pyspark --build-arg PYTHON_VERSION=3.6.10 --build-arg IMAGE=buster .
 ```
 
 
