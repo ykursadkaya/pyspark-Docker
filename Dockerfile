@@ -7,7 +7,7 @@ FROM openjdk:${OPENJDK_VERSION}-${IMAGE_VARIANT}
 
 COPY --from=py3 / /
 
-ARG PYSPARK_VERSION=3.0.0
+ARG PYSPARK_VERSION=3.0.1
 RUN pip --no-cache-dir install pyspark==${PYSPARK_VERSION}
 
 ENTRYPOINT ["python"]

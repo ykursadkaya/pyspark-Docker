@@ -10,7 +10,7 @@ Just an image for running PySpark.
 
 - Python -> python:3.7.9-slim-buster
 
-- PySpark -> 3.0.0
+- PySpark -> 3.0.1
 
   
 
