@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
         openjdk-version: [8]
-        python-version: [3.9.5]
-        pyspark-version: [3.1.2]
+        python-version: [3.9.8]
+        pyspark-version: [3.2.0]
         image-variant: ['slim-buster', 'buster']
     
     steps:
