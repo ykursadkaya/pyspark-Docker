@@ -15,10 +15,10 @@ jobs:
     
     strategy:
       matrix:
-        openjdk-version: [8]
-        python-version: [3.9.8]
-        pyspark-version: [3.2.0]
-        image-variant: ['slim-buster', 'buster']
+        openjdk-version: [11]
+        python-version: [3.9.12]
+        pyspark-version: [3.2.1]
+        image-variant: ['jre-focal']
     
     steps:
       - 
