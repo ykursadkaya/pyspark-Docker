@@ -16,7 +16,7 @@ jobs:
         openjdk-version: [11]
         python-version: [3.9.12]
         pyspark-version: [3.2.1]
-        image-variant: ['jre-focal']
+        image-variant: ['slim-buster']
     
     steps:
       -
