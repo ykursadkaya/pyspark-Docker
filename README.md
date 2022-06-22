@@ -6,11 +6,11 @@ Just an image for running PySpark.
 
 ##### Default versions
 
-- OpenJDK -> openjdk:8-slim-buster
+- OpenJDK -> eclipse-temurin:17-jre-focal
 
-- Python -> python:3.9.5-slim-buster
+- Python -> python:3.10.5-slim-buster
 
-- PySpark -> 3.1.2
+- PySpark -> 3.3.0
 
   
 
